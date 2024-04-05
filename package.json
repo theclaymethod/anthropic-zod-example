@@ -1,0 +1,22 @@
+{
+  "name": "basic-claude-tool-calls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "tsx ./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.20.1",
+    "typescript": "^5.4.4",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.5"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
