@@ -160,20 +160,23 @@ async function parseTextToStructuredAnthropic<T>({
 }
 
 // Define the weather schema
+
+const weatherParams = z.object({
+    location: z.string().describe("The city and state, e.g. San Francisco, CA"),
+    unit: z.enum(["celsius", "fahrenheit"]).optional().describe(
+        "The unit of temperature, either 'celsius' or 'fahrenheit'",
+    ),
+})
+type WeatherParams = z.infer<typeof weatherParams>;
 const weatherSchema = {
     name: "get_weather",
     description: "Get the current weather in a given location",
-    input_schema: z.object({
-        location: z.string().describe("The city and state, e.g. San Francisco, CA"),
-        unit: z.enum(["celsius", "fahrenheit"]).optional().describe(
-            "The unit of temperature, either 'celsius' or 'fahrenheit'",
-        ),
-    }),
+    input_schema: weatherParams
 };
 
 // Example usage
 const text = "What is the weather like in San Francisco?";
-const result = await parseTextToZodAnthropic({
+const result: WeatherParams = await parseTextToZodAnthropic<WeatherParams>({
     text,
     schema: weatherSchema,
 });
