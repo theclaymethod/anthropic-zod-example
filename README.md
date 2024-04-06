@@ -9,5 +9,7 @@ This also includes a failover to try again with a more powerful model if the ini
 copy .env.template to .env
 Add your Anthropic API Key
 
-```npm install
-npm run test```
+```
+npm install
+npm run test
+```
